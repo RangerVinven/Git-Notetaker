@@ -1,4 +1,7 @@
-class TestData {
+import 'package:flutter/material.dart';
+import 'package:flutter_simple_treeview/flutter_simple_treeview.dart';
+
+class FilesAndFolders {
   static String testMarkdown = '''
 # SQL Injection
 **In the payloads here, I use "-- -", this is just to show that there's a space after the "--", don't put another "-" after the "-- "**
@@ -40,5 +43,31 @@ Test if the results of an input (like a search) changes based off of your payloa
 **In the payloads here, I use "-- -", this is just to show that there's a space after the "--", don't put another "-" after the "-- "**
 ''';
 
-  static List<String> filesAndFolders = ["SQL Injection", "SSRF", "Hello/"];
+  static Map<String, String> files = {
+    "SQL Injection": "File",
+    "Hello": "Folder",
+    "SSRF": "File",
+  };
+
+  // Converts the map into a list of TreeNodes
+  List<TreeNode> makeTreeView(Map<String, String> files) {
+    List<TreeNode> nodes = [];
+
+    // Iterates through the map, adding the relevant TreeNode (with/without children)
+    files.forEach((String key, String value) {
+      if(value == "File") {
+        nodes.add(TreeNode(content: Text(key)));
+      } else {
+        nodes.add(TreeNode(
+          content: Text(key),
+          children: [
+            TreeNode(content: const Text(""))
+          ]
+        ));
+      }
+    });
+
+    return nodes;
+
+  }
 }

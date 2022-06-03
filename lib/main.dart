@@ -4,7 +4,7 @@ import 'package:markdown_editable_textinput/format_markdown.dart';
 import 'package:markdown_editable_textinput/markdown_text_input.dart';
 
 import 'Navbar.dart';
-import 'TestData.dart';
+import 'FilesAndFolders.dart';
 
 const String NOTE_URL = "https://api.github.com/repos/RangerVinven/Bug-Bounty-Cheatsheet/contents/";
 
@@ -66,7 +66,7 @@ class _HomePageState extends State<HomePage> {
         body: Row(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const Navbar(),
+              Navbar(),
               Expanded(
                 flex: 4,
                 child: MarkdownTextInput(
