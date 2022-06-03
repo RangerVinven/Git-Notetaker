@@ -1,11 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:markdown_editable_textinput/format_markdown.dart';
+import 'package:markdown_editable_textinput/markdown_text_input.dart';
 
 void main() {
   runApp(const HomePage());
 }
 
-String testMarkdown = '''
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  String testMarkdown = '''
 # Hello World
 *It Works*
 - Test 1
@@ -17,8 +27,14 @@ SELECT * FROM users;
 ```
 ''';
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  TextEditingController controller = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+
+    controller.addListener(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,8 +51,14 @@ class HomePage extends StatelessWidget {
               Expanded(
                 flex: 4,
                 child: Container(
-                  color: Colors.red,
-                  child: const Text("fda"),
+                  child: MarkdownTextInput(
+                    (String value) => setState(() => testMarkdown = value),
+                    testMarkdown,
+                    label: "Your Markdown",
+                    maxLines: 40,
+                    actions: const [MarkdownType.blockquote, MarkdownType.bold, MarkdownType.code, MarkdownType.link, MarkdownType.separator, MarkdownType.strikethrough, MarkdownType.title],
+                    controller: controller,
+                  ),
                 )
               ),
               Expanded(
