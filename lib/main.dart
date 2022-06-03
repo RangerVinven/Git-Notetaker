@@ -70,8 +70,8 @@ class _HomePageState extends State<HomePage> {
               Expanded(
                 flex: 4,
                 child: MarkdownTextInput(
-                  (String value) => setState(() => TestData.testMarkdown = value),
-                  TestData.testMarkdown,
+                  (String value) => setState(() => FilesAndFolders.testMarkdown = value),
+                  FilesAndFolders.testMarkdown,
                   label: "Your Markdown",
                   maxLines: 40,
                   actions: const [MarkdownType.blockquote, MarkdownType.bold, MarkdownType.code, MarkdownType.link, MarkdownType.separator, MarkdownType.strikethrough, MarkdownType.title],
@@ -82,7 +82,7 @@ class _HomePageState extends State<HomePage> {
                 flex: 4,
                 child: Container(
                   child: Markdown(
-                    data: TestData.testMarkdown,
+                    data: FilesAndFolders.testMarkdown,
                     selectable: true,
                     controller: scrollController,
                   ),

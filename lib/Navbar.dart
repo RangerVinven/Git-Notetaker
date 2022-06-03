@@ -8,7 +8,7 @@ class Navbar extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  TestData testData = new TestData();
+  FilesAndFolders fileManager = new FilesAndFolders();
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class Navbar extends StatelessWidget {
         color: Colors.cyan,
         child: TreeView(
           
-          nodes: testData.makeTreeView(TestData.files),
+          nodes: fileManager.makeTreeView(fileManager.files),
         )
           // children: TestData.filesAndFolders.map((fileOrFolder) => Text(fileOrFolder, style: const TextStyle(fontSize: 18),)).toList(),
       )

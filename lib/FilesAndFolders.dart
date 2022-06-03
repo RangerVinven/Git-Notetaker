@@ -43,19 +43,31 @@ Test if the results of an input (like a search) changes based off of your payloa
 **In the payloads here, I use "-- -", this is just to show that there's a space after the "--", don't put another "-" after the "-- "**
 ''';
 
-  static Map<String, String> files = {
-    "SQL Injection": "File",
-    "Hello": "Folder",
-    "SSRF": "File",
+  Map<String, Map<String, String>> files = {
+    "SQL Injection": {
+      "type": "file",
+      "path": "SQL Injection",
+      "url": "https://google.com"
+    },
+    "Hello": {
+      "type": "dir",
+      "path": "SQL Injection",
+      "url": "https://google.com"
+    },
+    "SSRF": {
+      "type": "file",
+      "path": "SQL Injection",
+      "url": "https://google.com"
+    },
   };
 
   // Converts the map into a list of TreeNodes
-  List<TreeNode> makeTreeView(Map<String, String> files) {
+  List<TreeNode> makeTreeView(Map<String, Map<String, String>> files) {
     List<TreeNode> nodes = [];
 
     // Iterates through the map, adding the relevant TreeNode (with/without children)
-    files.forEach((String key, String value) {
-      if(value == "File") {
+    files.forEach((String key, Map<String, String> value) {
+      if(files[key]!["type"] == "file") {
         nodes.add(TreeNode(content: Text(key)));
       } else {
         nodes.add(TreeNode(
