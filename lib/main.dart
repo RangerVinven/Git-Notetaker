@@ -37,8 +37,31 @@ class _HomePageState extends State<HomePage> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text("Git NoteTaker"),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              const Text("Git NoteTaker"),
+              SizedBox(
+                height: 40,
+                child: TextButton(
+                  onPressed: () {},
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.red),
+                    elevation: MaterialStateProperty.all<double>(0)
+                  ),
+                  child: const Text(
+                    "Save",
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.white
+                    ),
+                  ),
+                ),
+              )
+            ],
+          ),
           elevation: 0,
+          centerTitle: true,
         ),
         body: Row(
             crossAxisAlignment: CrossAxisAlignment.stretch,
