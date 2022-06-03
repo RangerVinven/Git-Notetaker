@@ -4,7 +4,7 @@ import 'package:markdown_editable_textinput/format_markdown.dart';
 import 'package:markdown_editable_textinput/markdown_text_input.dart';
 
 import 'Navbar.dart';
-import 'testData.dart';
+import 'TestData.dart';
 
 const String NOTE_URL = "https://api.github.com/repos/RangerVinven/Bug-Bounty-Cheatsheet/contents/";
 
@@ -23,6 +23,7 @@ class _HomePageState extends State<HomePage> {
   
 
   TextEditingController controller = TextEditingController();
+  ScrollController scrollController = ScrollController();
 
   @override
   void initState() {
@@ -58,7 +59,9 @@ class _HomePageState extends State<HomePage> {
                 flex: 4,
                 child: Container(
                   child: Markdown(
-                    data: TestData.testMarkdown
+                    data: TestData.testMarkdown,
+                    selectable: true,
+                    controller: scrollController,
                   ),
                 )
               ),

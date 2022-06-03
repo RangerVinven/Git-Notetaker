@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'testData.dart';
+import 'TestData.dart';
 
 class Navbar extends StatelessWidget {
   const Navbar({
@@ -9,13 +9,6 @@ class Navbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return Expanded(
-    //   flex: 2,
-    //   child: Container(
-    //     color: Colors.cyan,
-    //     child: Text("fdsa"),
-    //   )
-    // );
     return Expanded(
       flex: 2,
       child: Container(
